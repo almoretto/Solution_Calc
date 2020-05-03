@@ -2,11 +2,15 @@
 
 namespace Solution_Calc
 {
-    class calculator
+    class Calculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool teste;
+            int num = 2;
+            teste = (num & 8) != 0;
+            Console.WriteLine(teste);
+            Console.ReadLine();
         }
     }
 }

@@ -7,6 +7,8 @@ namespace Solution_Calc
     class ClassCalc
     {
         private double Resultado;
+        private double Auxiliar;
+        private bool Teste;
         public double Somar(double a, double b)
         {
             return a + b;
@@ -22,7 +24,7 @@ namespace Solution_Calc
             Resultado = a * b;
             return Resultado.ToString("F2");
         }
-        public string Dividir (double a, double b)
+        public string Dividir(double a, double b)
         {
             if (b == 0)
             {
@@ -43,9 +45,75 @@ namespace Solution_Calc
             else
             {
                 Resultado = a % b;
-                return Resultado.ToString("F2");
+                if (Resultado == 0)
+                {
+                    return a + " é divisível! por " + b;
+                }
+                else
+                {
+                    return "Resto da divisão de " + a + " por " + b + "é: " + Resultado.ToString("F2")+"\n"+"Portanto não são divisíveis!";
+                }
             }
         }
-        public string 
+        public string ParImpar(int num)
+        {
+            //	5. Write an expression that checks whether an integer is odd or even.
+
+            Resultado = num % 2;
+            if (Resultado==0)
+            {
+                return "Par";
+            }
+            else
+            {
+                return "Impar";
+            }
+        }
+        public string ChecarCentena(int num, int chek)
+        {
+            Auxiliar = num / 100;
+            Auxiliar /= 10;
+            Resultado = Auxiliar % 10;
+            if (Resultado==chek)
+            {
+                return "Centena é: " + Resultado;
+            }
+            else
+            {
+                return "Não é igual ao número solicitado.";
+            }
+        }
+        public int BinarioTercPos(int n)
+        {
+            Teste = (n & 8) != 0;
+            if (Teste)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public double Quadrilatero(double lado, double altura, char c)
+        {
+            if (c=='A'||c=='a')
+            {
+                Resultado = lado * altura;
+                return Resultado;
+            }
+            else if (c == 'P' || c == 'p')
+            {
+                Resultado = (2 * lado) + (2 * altura);
+                return Resultado;
+            }
+            else
+            {
+                Console.WriteLine("Cálculo não implementado");
+                return 0.0;
+            }
+        }
+
+
     }
 }
