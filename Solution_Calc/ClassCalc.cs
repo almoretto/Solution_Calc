@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security;
 using System.Text;
 
 namespace Solution_Calc
@@ -114,6 +115,44 @@ namespace Solution_Calc
             }
         }
 
-
+        public double Trapezio(double baseA, double baseB, char c, double alturaH=0.0, double ladoC=0.0, double ladoD=0.0)
+        {
+            c = char.ToUpper(c);
+            switch (c)
+            {
+                case 'A':
+                    Resultado = (baseA + baseB) * (alturaH / 2);
+                    break;
+                case 'P':
+                    Resultado = baseA + baseB + ladoC + ladoD;
+                    break;
+            }
+            return Resultado;
+        }
+        public double PesoLunar(double peso)
+        {
+            Resultado=peso*0.17;
+            return Resultado;
+        }
+        public string VerificarCoordenadaNaArea(int x, int y)
+        {
+            Resultado = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+            if (Resultado<=5)
+            {
+                return "O ponto P{"
+                    +x
+                    +","
+                    +y
+                    +"} está dentro da circunferência de centro k{0,0] e Raio 5";
+            }
+            else
+            {
+                return "O ponto P{"
+                    + x
+                    + ","
+                    + y
+                    + "} está fora da circunferência de centro k{0,0] e Raio 5";
+            }
+        }
     }
 }
