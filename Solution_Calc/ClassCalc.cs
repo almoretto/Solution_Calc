@@ -52,7 +52,7 @@ namespace Solution_Calc
                 }
                 else
                 {
-                    return "Resto da divisão de " + a + " por " + b + "é: " + Resultado.ToString("F2")+"\n"+"Portanto não são divisíveis!";
+                    return "Resto da divisão de " + a + " por " + b + "é: " + Resultado.ToString("F2") + "\n" + "Portanto não são divisíveis!";
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace Solution_Calc
             //	5. Write an expression that checks whether an integer is odd or even.
 
             Resultado = num % 2;
-            if (Resultado==0)
+            if (Resultado == 0)
             {
                 return "Par";
             }
@@ -75,7 +75,7 @@ namespace Solution_Calc
             Auxiliar = num / 100;
             Auxiliar /= 10;
             Resultado = Auxiliar % 10;
-            if (Resultado==chek)
+            if (Resultado == chek)
             {
                 return "Centena é: " + Resultado;
             }
@@ -98,7 +98,7 @@ namespace Solution_Calc
         }
         public double Quadrilatero(double lado, double altura, char c)
         {
-            if (c=='A'||c=='a')
+            if (c == 'A' || c == 'a')
             {
                 Resultado = lado * altura;
                 return Resultado;
@@ -115,7 +115,7 @@ namespace Solution_Calc
             }
         }
 
-        public double Trapezio(double baseA, double baseB, char c, double alturaH=0.0, double ladoC=0.0, double ladoD=0.0)
+        public double Trapezio(double baseA, double baseB, char c, double alturaH = 0.0, double ladoC = 0.0, double ladoD = 0.0)
         {
             c = char.ToUpper(c);
             switch (c)
@@ -131,28 +131,118 @@ namespace Solution_Calc
         }
         public double PesoLunar(double peso)
         {
-            Resultado=peso*0.17;
+            Resultado = peso * 0.17;
             return Resultado;
         }
-        public string VerificarCoordenadaNaArea(int x, int y)
+        public string VerificarCoordenadaNaAreaCirculo(int x, int y, double r, int x1 = 0, int y1 = 0)
         {
-            Resultado = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
-            if (Resultado<=5)
+
+            if ((x1 == 0) && (y1 == 0))
             {
-                return "O ponto P{"
-                    +x
-                    +","
-                    +y
-                    +"} está dentro da circunferência de centro k{0,0] e Raio 5";
+                Resultado = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+                if (Resultado <= r)
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está dentro da circunferência de centro k{0,0] e Raio 5";
+                }
+                else
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está fora da circunferência de centro k{0,0] e Raio 5";
+                }
             }
             else
             {
-                return "O ponto P{"
-                    + x
-                    + ","
-                    + y
-                    + "} está fora da circunferência de centro k{0,0] e Raio 5";
+                Auxiliar = Math.Sqrt(Math.Pow((x - x1), 2) + Math.Pow((y - y1), 2));
+                if (Auxiliar <= r)
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está dentro da circunferência de centro k{0,0] e Raio 5";
+                }
+                else
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está fora da circunferência de centro k{0,0] e Raio 5";
+                }
             }
+
         }
+        public string VerificarCoordenadaNaAreaRetCirc(int x, int y, double r, int x1 = 0, int y1 = 0)
+        {
+            /* Write an expression that checks for given point {x, y} if it is within the circle K({0, 0}, R=5) 
+             * and out of the rectangle [{-1, 1}, {5, 5}]. 
+             * Clarification: for the rectangle the lower left and the upper right corners are given. 
+             */
+            if ((x1 == 0) && (y1 == 0))
+            {
+                Resultado = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+                if ((Resultado <= r) && (y < 1 || x < -1))
+                {
+
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está dentro da circunferência de centro k{0,0] e Raio 5"
+                        + "e fora do retângulo posição LL{-1,1} e UR{5,5}";
+                }
+                else
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está fora da circunferência de centro k{0,0] e Raio 5."
+                        + " Ou dentro do retângulo";
+                }
+            }
+            else
+            {
+                Auxiliar = Math.Sqrt(Math.Pow((x - x1), 2) + Math.Pow((y - y1), 2));
+                if ((Auxiliar <= r) && (y < 1 || x < -1))
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está dentro da circunferência de centro k{0,0] e Raio 5"
+                        + "e fora do retângulo posição LL{-1,1} e UR{5,5}";
+                }
+                else if (((Auxiliar <= r) && (y >5 || x > 5)))
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está dentro da circunferência de centro k{0,0] e Raio 5"
+                        + "e fora do retângulo posição LL{-1,1} e UR{5,5}";
+                }
+                else
+                {
+                    return "O ponto P{"
+                        + x
+                        + ","
+                        + y
+                        + "} está fora da circunferência de centro k{0,0] e Raio 5";
+                }
+            }
+
+            return "a";
+        }
+
+
+
     }
 }
