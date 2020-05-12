@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Security;
 using System.Text;
 
@@ -220,7 +221,7 @@ namespace Solution_Calc
                         + "} está dentro da circunferência de centro k{0,0] e Raio 5"
                         + "e fora do retângulo posição LL{-1,1} e UR{5,5}";
                 }
-                else if (((Auxiliar <= r) && (y >5 || x > 5)))
+                else if (((Auxiliar <= r) && (y > 5 || x > 5)))
                 {
                     return "O ponto P{"
                         + x
@@ -238,11 +239,28 @@ namespace Solution_Calc
                         + "} está fora da circunferência de centro k{0,0] e Raio 5";
                 }
             }
-
-            return "a";
         }
+        public string QuatroDigitos(int a, int b, int c, int d)
+        {
+            /*Write a program that takes as input a four-digit number in format abcd(e.g. 2011) 
+           * and performs the following actions: 
+           * Calculates the sum of the digits(in our example 2+0+1+1 = 4). 
+           * Prints on the console the number in reversed order: dcba(in our example 1102). 
+           * Puts the last digit in the first position: dabc(in our example 1201). 
+           * Exchanges the second and the third digits: acbd(in our example 2101). 
+           */
+            Resultado = a + b + c + d;
 
+            return "A Soma dos 4 digitos é: "
+                + Resultado
+                + ", ordem invertida: "
+                + d + c + b + a
+                + ", ultimo em primeiro: "
+                + d + a + b + c
+                + ", troca segundo e terceiro: "
+                + a + c + b + d;
 
-
+        }
+        
     }
 }
