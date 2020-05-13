@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Security;
 using System.Text;
+using System.Numerics;
 
 namespace Solution_Calc
 {
@@ -259,8 +260,9 @@ namespace Solution_Calc
                 + d + a + b + c
                 + ", troca segundo e terceiro: "
                 + a + c + b + d;
-
+            
         }
+        
         
     }
 }
